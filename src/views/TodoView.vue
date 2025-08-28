@@ -28,7 +28,7 @@ const filteredTodoList = computed(() => {
   }
 })
 
-const finishedTodo = computed(() => todoList.value.filter((todo) => todo.status).length)
+const pendingTodo = computed(() => todoList.value.filter((todo) => !todo.status).length)
 
 onMounted(async () => {
   try {
@@ -188,7 +188,7 @@ const switchTab = (tab) => {
               @update-todo="updateTodo"
             />
             <div class="todoList_statistics">
-              <p>{{ finishedTodo }} 個已完成項目</p>
+              <p>{{ pendingTodo }} 個待完成項目</p>
             </div>
           </div>
         </div>
